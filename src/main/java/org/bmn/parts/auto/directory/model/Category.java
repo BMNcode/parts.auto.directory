@@ -2,12 +2,18 @@ package org.bmn.parts.auto.directory.model;
 
 import lombok.Data;
 
+import javax.persistence.*;
+
 @Data
+@Entity
+@Table(name = "category")
 public class Category {
-    private Long id;
-    private String body;
-	private String engine;
-	private String chassis;
-	private String brakeSystem;
-	private String interior;
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id", nullable = false)
+	private Long id;
+
+	@Column(name = "name", nullable = false)
+	private String name;
 }
