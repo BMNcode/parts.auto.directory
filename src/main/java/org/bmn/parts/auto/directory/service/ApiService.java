@@ -5,6 +5,7 @@ import org.bmn.parts.auto.directory.model.Brand;
 import org.bmn.parts.auto.directory.model.Category;
 import org.bmn.parts.auto.directory.model.Model;
 import org.bmn.parts.auto.directory.model.Part;
+import org.bmn.parts.auto.directory.repository.BrandRepository;
 import org.bmn.parts.auto.directory.repository.CategoryRepository;
 import org.bmn.parts.auto.directory.repository.ModelRepository;
 import org.bmn.parts.auto.directory.repository.PartRepository;
@@ -15,17 +16,22 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class PartService {
+public class ApiService {
 
     private final PartRepository partRepository;
     private final ModelRepository modelRepository;
     private final CategoryRepository categoryRepository;
+    private final BrandRepository brandRepository;
 
     @Autowired
-    public PartService(PartRepository partRepository, ModelRepository modelRepository, CategoryRepository categoryRepository) {
+    public ApiService(PartRepository partRepository,
+                      ModelRepository modelRepository,
+                      CategoryRepository categoryRepository,
+                      BrandRepository brandRepository) {
         this.partRepository = partRepository;
         this.modelRepository = modelRepository;
         this.categoryRepository = categoryRepository;
+        this.brandRepository = brandRepository;
     }
 
     public PartDTO save(SavePartDTO req) {
@@ -49,8 +55,37 @@ public class PartService {
         return part2DTO(partRepository.save(part));
     }
 
-    public List<PartDTO> getByParams (GetPartByParamsDTO req) {
-        return partRepository.findAllByParams(true).stream()
+    public List<PartDTO> getAllPart() {
+        return partRepository.findAll().stream()
+                .map(this::part2DTO)
+                .collect(Collectors.toList());
+    }
+
+    public List<CategoryDTO> getAllCategory() {
+        return categoryRepository.findAll().stream()
+                .map(this::category2DTO)
+                .collect(Collectors.toList());
+    }
+
+    public List<ModelDTO> getAllModel() {
+        return modelRepository.findAll().stream()
+                .map(this::model2DTO)
+                .collect(Collectors.toList());
+    }
+
+    public List<BrandDTO> getAllBrand() {
+        return brandRepository.findAll().stream()
+                .map(this::brand2DTO)
+                .collect(Collectors.toList());
+    }
+
+    public List<PartDTO> getByParams (String article,
+                                      String partName,
+                                      String category,
+                                      String model,
+                                      String brand,
+                                      Operation operation) {
+        return partRepository.findByParams(article, partName, category, model, brand, operation).stream()
                 .map(this::part2DTO)
                 .collect(Collectors.toList());
     }

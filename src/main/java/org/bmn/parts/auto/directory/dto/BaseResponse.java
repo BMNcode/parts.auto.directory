@@ -5,6 +5,6 @@ import lombok.RequiredArgsConstructor;
 
 @Getter
 @RequiredArgsConstructor
-public class Simple<T> {
+public class BaseResponse<T> {
     private final T result;
 }

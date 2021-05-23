@@ -10,9 +10,9 @@ import java.util.List;
 @RequiredArgsConstructor
 public class GetPartByParamsDTO {
 
-    @NonNull
+
     private final List<String> params;
-    @NonNull
+
     private final Operation operation;
 
 }

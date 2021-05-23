@@ -2,27 +2,27 @@ create sequence hibernate_sequence start 1 increment 1;
 
 create table brand (
 	id int8 not null, 
-	brand_name varchar(255) not null, 
+	brand_name varchar(20) not null,
 	primary key (id)
 );
 
 create table category (
 	id int8 not null,
-	name varchar(255) not null,
+	category_name varchar(20) not null,
 	primary key (id)
 );
 
 create table model (
 	id int8 not null,
-	model_name varchar(255) not null,
+	model_name varchar(20) not null,
 	brand_id int8,
 	primary key (id)
 );
 
 create table part (
 	id int8 not null, 
-	article varchar(255) not null, 
-	part_name varchar(255) not null, 
+	article varchar(20) not null,
+	part_name varchar(20) not null,
 	category_id int8 not null, 
 	model_id int8 not null, 
 	primary key (id)

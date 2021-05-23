@@ -1,8 +1,10 @@
 package org.bmn.parts.auto.directory.dto;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 
-@Data
+@Getter
+@RequiredArgsConstructor
 public class BrandDTO {
     private final Long id;
     private final String brand;

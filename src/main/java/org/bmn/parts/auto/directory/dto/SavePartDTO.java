@@ -1,13 +1,15 @@
 package org.bmn.parts.auto.directory.dto;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 
-@Data
+@Getter
+@RequiredArgsConstructor
 public class SavePartDTO {
 
-    private String article;
-    private String partName;
-    private Long categoryId;
-    private Long modelId;
+    private final String article;
+    private final String partName;
+    private final Long categoryId;
+    private final Long modelId;
 
 }

@@ -1,6 +1,5 @@
 package org.bmn.parts.auto.directory.dto;
 
-import lombok.Data;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
@@ -8,10 +7,10 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class UpdatePartDTO {
 
-    private Long id;
-    private String article;
-    private String partName;
-    private Long categoryId;
-    private Long modelId;
+    private final Long id;
+    private final String article;
+    private final String partName;
+    private final Long categoryId;
+    private final Long modelId;
 
 }
