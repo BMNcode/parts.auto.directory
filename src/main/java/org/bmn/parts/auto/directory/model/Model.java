@@ -3,6 +3,7 @@ package org.bmn.parts.auto.directory.model;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 @Data
@@ -18,10 +19,10 @@ public class Model {
     @Column(name = "model_name", nullable = false)
     private String name;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "brand_id")
     private Brand brand;
 
-    @OneToMany(mappedBy="model")
-    private Set<Part> parts;
+    @ManyToMany(mappedBy = "models")
+    private List<Part> parts;
 }

@@ -12,11 +12,13 @@ import org.bmn.parts.auto.directory.repository.PartRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
-public class ApiService {
+public class PartService {
 
     private final PartRepository partRepository;
     private final ModelRepository modelRepository;
@@ -24,10 +26,10 @@ public class ApiService {
     private final BrandRepository brandRepository;
 
     @Autowired
-    public ApiService(PartRepository partRepository,
-                      ModelRepository modelRepository,
-                      CategoryRepository categoryRepository,
-                      BrandRepository brandRepository) {
+    public PartService(PartRepository partRepository,
+                       ModelRepository modelRepository,
+                       CategoryRepository categoryRepository,
+                       BrandRepository brandRepository) {
         this.partRepository = partRepository;
         this.modelRepository = modelRepository;
         this.categoryRepository = categoryRepository;
@@ -36,10 +38,12 @@ public class ApiService {
 
     public PartDTO save(SavePartDTO req) {
         Part part = new Part();
-        part.setPartName(req.getPartName());
         part.setArticle(req.getArticle());
-        part.setModel(modelRepository.getById(req.getModelId()));
+        part.setPartName(req.getPartName());
         part.setCategory(categoryRepository.getById(req.getCategoryId()));
+        part.setModels(req.getModelId().stream()
+                .map(modelRepository::getById)
+                .collect(Collectors.toList()));
 
         return part2DTO(partRepository.save(part));
     }
@@ -49,7 +53,9 @@ public class ApiService {
         part.setId(req.getId());
         part.setPartName(req.getPartName());
         part.setArticle(req.getArticle());
-        part.setModel(modelRepository.getById(req.getModelId()));
+        part.setModels(req.getModelId().stream()
+                .map(modelRepository::getById)
+                .collect(Collectors.toList()));
         part.setCategory(categoryRepository.getById(req.getCategoryId()));
 
         return part2DTO(partRepository.save(part));
@@ -67,11 +73,11 @@ public class ApiService {
                 .collect(Collectors.toList());
     }
 
-    public List<ModelDTO> getAllModel() {
-        return modelRepository.findAll().stream()
-                .map(this::model2DTO)
-                .collect(Collectors.toList());
-    }
+//    public List<ModelDTO> getAllModel() {
+//        return modelRepository.findAll().stream()
+//                .map(this::model2DTO)
+//                .collect(Collectors.toList());
+//    }
 
     public List<BrandDTO> getAllBrand() {
         return brandRepository.findAll().stream()
@@ -91,15 +97,21 @@ public class ApiService {
     }
 
     private PartDTO part2DTO(Part part) {
-        return new PartDTO(part.getId(), part.getArticle(), part.getPartName(), model2DTO(part.getModel()), category2DTO(part.getCategory()));
+        return new PartDTO(part.getId(),
+                           part.getArticle(),
+                           part.getPartName(),
+                           model2DTO(part.getModels()),
+                           category2DTO(part.getCategory()));
     }
 
 //    private Part dto2Part(PartDTO partDTO) {
 //        return new Part(partDTO.getId(), partDTO.getArticle(), partDTO.getPartName(), model2DTO(part.getModel()), category2DTO(part.getCategory()))
 //    }
 
-    private ModelDTO model2DTO(Model model) {
-        return new ModelDTO(model.getId(), model.getName(), brand2DTO(model.getBrand()));
+    private List<ModelDTO> model2DTO(List<Model> models) {
+        return models.stream()
+                .map(m -> new ModelDTO(m.getId(), m.getName(), brand2DTO(m.getBrand())))
+                .collect(Collectors.toList());
     }
 
 //    private Model dto2model(ModelDTO modelDTO) {

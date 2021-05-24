@@ -1,10 +1,16 @@
 package org.bmn.parts.auto.directory.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
+import java.util.Set;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "part")
 public class Part {
@@ -20,11 +26,20 @@ public class Part {
 	@Column(name = "part_name", nullable = false)
 	private String partName;
 
-	@ManyToOne
-	@JoinColumn(name="model_id", nullable=false)
-	private Model model;
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "part_models",
+			joinColumns = @JoinColumn(name = "parts_id", referencedColumnName = "id"),
+			inverseJoinColumns = @JoinColumn(name = "models_id", referencedColumnName = "id"))
+	private List<Model> models;
 
 	@ManyToOne
 	@JoinColumn(name = "category_id", nullable = false)
 	private Category category;
+//
+//	public Part(String article, String partName, List<Model> models, Category category) {
+//		this.article = article;
+//		this.partName = partName;
+//		this.models = models;
+//		this.category = category;
+//	}
 }

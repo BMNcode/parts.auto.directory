@@ -25,28 +25,28 @@ public class BrandService {
         this.dtoService = dtoService;
     }
 
-    public BrandDTO save(SaveBrandDTO req) {
-        Brand brand = new Brand();
-        if(brandRepository.existsBrandByBrand(req.getBrand())) {
-            return dtoService.brand2DTO(brandRepository.findByBrand(req.getBrand()));
-        }
-        brand.setBrand(req.getBrand());
-        brandRepository.save(brand);
-        return dtoService.brand2DTO(brand);
-    }
-
-    public List<BrandDTO> getAllBrand() {
-        return brandRepository.findAll().stream()
-                .map(dtoService::brand2DTO)
-                .collect(Collectors.toList());
-    }
-
-    public BrandDTO delete(DeleteBrandDTO deleteBrandDTO) {
-        Optional<Brand> optionalBrand = brandRepository.findById(deleteBrandDTO.getId());
-        if (!optionalBrand.isPresent())
-            throw new EntityNotFoundException("id-" + deleteBrandDTO.getId());
-        Brand brand = new Brand(optionalBrand.get().getId(), optionalBrand.get().getBrand(), optionalBrand.get().getModels());
-        brandRepository.deleteById(deleteBrandDTO.getId());
-        return dtoService.brand2DTO(brand);
-    }
+//    public BrandDTO save(SaveBrandDTO req) {
+//        Brand brand = new Brand();
+//        if(brandRepository.existsBrandByBrand(req.getBrand())) {
+//            return dtoService.brand2DTO(brandRepository.findByBrand(req.getBrand()));
+//        }
+//        brand.setBrand(req.getBrand());
+//        brandRepository.save(brand);
+//        return dtoService.brand2DTO(brand);
+//    }
+//
+//    public List<BrandDTO> getAllBrand() {
+//        return brandRepository.findAll().stream()
+//                .map(dtoService::brand2DTO)
+//                .collect(Collectors.toList());
+//    }
+//
+//    public BrandDTO delete(DeleteBrandDTO deleteBrandDTO) {
+//        Optional<Brand> optionalBrand = brandRepository.findById(deleteBrandDTO.getId());
+//        if (!optionalBrand.isPresent())
+//            throw new EntityNotFoundException("id-" + deleteBrandDTO.getId());
+//        Brand brand = new Brand(optionalBrand.get().getId(), optionalBrand.get().getBrand(), optionalBrand.get().getModels());
+//        brandRepository.deleteById(deleteBrandDTO.getId());
+//        return dtoService.brand2DTO(brand);
+//    }
 }
