@@ -6,6 +6,11 @@ import lombok.RequiredArgsConstructor;
 @Getter
 @RequiredArgsConstructor
 public class BrandDTO {
-    private final Long id;
+    private Long id;
     private final String brand;
+
+    public BrandDTO(Long id, String brand) {
+        this.id = id;
+        this.brand = brand;
+    }
 }

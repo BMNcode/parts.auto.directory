@@ -45,11 +45,6 @@ public class Controller {
         return new BaseResponse<>(apiService.getAllModel());
     }
 
-    @GetMapping("/brand/all")
-    public BaseResponse<List<BrandDTO>> getAllBrand() {
-        return new BaseResponse<>(apiService.getAllBrand());
-    }
-
     @GetMapping
     @ResponseBody
     public BaseResponse<List<PartDTO>> findByParams(@RequestParam(required = false) String article,

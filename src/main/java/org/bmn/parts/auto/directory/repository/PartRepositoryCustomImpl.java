@@ -69,6 +69,7 @@ public class PartRepositoryCustomImpl implements PartRepositoryCustom {
         }
 
         c.where(predicate);
+
         return entityManager.createQuery(c).getResultList();
     }
 }

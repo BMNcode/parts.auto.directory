@@ -99,7 +99,7 @@ public class ApiService {
 //    }
 
     private ModelDTO model2DTO(Model model) {
-        return new ModelDTO(model.getId(), model.getModel(), brand2DTO(model.getBrand()));
+        return new ModelDTO(model.getId(), model.getName(), brand2DTO(model.getBrand()));
     }
 
 //    private Model dto2model(ModelDTO modelDTO) {
