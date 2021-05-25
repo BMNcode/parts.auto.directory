@@ -3,20 +3,23 @@ create sequence hibernate_sequence start 1 increment 1;
 create table brand (
 	id int8 not null,
 	brand_name varchar(255) not null,
-	primary key (id)
+	primary key (id),
+	unique (brand_name)
 );
 
 create table category (
 	id int8 not null,
 	category_name varchar(255) not null,
-	primary key (id)
+	primary key (id),
+	unique (category_name)
 );
 
 create table model (
 	id int8 not null,
 	model_name varchar(255) not null,
 	brand_id int8,
-	primary key (id)
+	primary key (id),
+	unique (model_name, brand_id)
 );
 
 create table part (
@@ -24,7 +27,8 @@ create table part (
 	article varchar(255) not null,
 	part_name varchar(255) not null,
 	category_id int8 not null,
-	primary key (id)
+	primary key (id),
+	unique (article)
 );
 
 create table part_models (

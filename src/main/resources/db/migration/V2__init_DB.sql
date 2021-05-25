@@ -30,3 +30,5 @@ insert into category(id, category_name)
            (4, 'chassis'),
            (5, 'brake system'),
            (6, 'interior');
+
+SELECT setval('hibernate_sequence', 13, true);

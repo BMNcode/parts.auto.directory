@@ -18,6 +18,8 @@ import org.bmn.parts.auto.directory.repository.PartRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -77,12 +79,6 @@ public class PartService {
                 .collect(Collectors.toList());
     }
 
-//    public List<ModelDTO> getAllModel() {
-//        return modelRepository.findAll().stream()
-//                .map(this::model2DTO)
-//                .collect(Collectors.toList());
-//    }
-
     public List<BrandDTO> getAllBrand() {
         return brandRepository.findAll().stream()
                 .map(this::brand2DTO)
@@ -95,6 +91,9 @@ public class PartService {
                                       String model,
                                       String brand,
                                       Operation operation) {
+        if (article == null && partName == null && category == null && model == null && brand == null) {
+            return Collections.emptyList();
+        }
         return partRepository.findByParams(article, partName, category, model, brand, operation).stream()
                 .map(this::part2DTO)
                 .collect(Collectors.toList());

@@ -38,7 +38,7 @@ public class PartController {
                                                     @RequestParam(required = false) String model,
                                                     @RequestParam(required = false) String brand,
                                                     @RequestParam(required = false) Operation operation) {
-        return new BaseResponse<>("kfkgk", partService.getByParams(article, partName, category, model, brand, operation));
+        return new BaseResponse<>("successfully find", partService.getByParams(article, partName, category, model, brand, operation));
     }
 
     @GetMapping("/all")

@@ -1,7 +1,7 @@
 package org.bmn.parts.auto.directory.dto.category;
 
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+        import lombok.RequiredArgsConstructor;
 
 @Getter
 @RequiredArgsConstructor
