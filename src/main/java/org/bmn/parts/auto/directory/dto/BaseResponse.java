@@ -1,6 +1,7 @@
 package org.bmn.parts.auto.directory.dto;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
@@ -8,6 +9,6 @@ import lombok.Setter;
 @Setter
 @RequiredArgsConstructor
 public class BaseResponse<T> {
-    private String message;
+    private final String message;
     private final T result;
 }

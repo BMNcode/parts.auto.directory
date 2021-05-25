@@ -1,6 +1,12 @@
 package org.bmn.parts.auto.directory.service;
 
 import org.bmn.parts.auto.directory.dto.*;
+import org.bmn.parts.auto.directory.dto.brand.BrandDTO;
+import org.bmn.parts.auto.directory.dto.category.CategoryDTO;
+import org.bmn.parts.auto.directory.dto.model.ModelDTO;
+import org.bmn.parts.auto.directory.dto.part.PartDTO;
+import org.bmn.parts.auto.directory.dto.part.SavePartDTO;
+import org.bmn.parts.auto.directory.dto.part.UpdatePartDTO;
 import org.bmn.parts.auto.directory.model.Brand;
 import org.bmn.parts.auto.directory.model.Category;
 import org.bmn.parts.auto.directory.model.Model;
@@ -12,9 +18,7 @@ import org.bmn.parts.auto.directory.repository.PartRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
@@ -110,7 +114,7 @@ public class PartService {
 
     private List<ModelDTO> model2DTO(List<Model> models) {
         return models.stream()
-                .map(m -> new ModelDTO(m.getId(), m.getName(), brand2DTO(m.getBrand())))
+                .map(m -> new ModelDTO(m.getId(), m.getModel(), brand2DTO(m.getBrand())))
                 .collect(Collectors.toList());
     }
 
@@ -127,7 +131,7 @@ public class PartService {
 //    }
 
     private CategoryDTO category2DTO(Category category) {
-        return new CategoryDTO(category.getId(), category.getName());
+        return new CategoryDTO(category.getId(), category.getCategory());
     }
 
 //    private Category dto2Category(CategoryDTO categoryDTO) {

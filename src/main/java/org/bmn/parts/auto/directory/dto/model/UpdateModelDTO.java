@@ -1,12 +1,12 @@
-package org.bmn.parts.auto.directory.dto;
+package org.bmn.parts.auto.directory.dto.model;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 @Getter
 @RequiredArgsConstructor
-public class ModelDTO {
+public class UpdateModelDTO {
     private final Long id;
     private final String model;
-    private final BrandDTO brand;
+    private final Long brandId;
 }

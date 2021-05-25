@@ -1,4 +1,4 @@
-package org.bmn.parts.auto.directory.dto;
+package org.bmn.parts.auto.directory.dto.brand;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

@@ -15,5 +15,5 @@ public class Category {
 	private Long id;
 
 	@Column(name = "category_name", nullable = false)
-	private String name;
+	private String category;
 }

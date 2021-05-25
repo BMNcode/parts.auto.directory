@@ -17,9 +17,9 @@ public class Model {
     private Long id;
 
     @Column(name = "model_name", nullable = false)
-    private String name;
+    private String model;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "brand_id")
     private Brand brand;
 

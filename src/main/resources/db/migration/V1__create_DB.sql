@@ -35,15 +35,15 @@ create table part_models (
 alter table if exists model
 	add constraint model_brand_fk
 	foreign key (brand_id) references brand;
-	
+
 alter table if exists part
 	add constraint part_category_fk
 	foreign key (category_id) references category;
-	
+
 alter table if exists part_models
 	add constraint part_models_model_fk
 	foreign key (models_id) references model;
-	
+
 alter table if exists part_models
 	add constraint part_models_part_fk
 	foreign key (parts_id) references part;

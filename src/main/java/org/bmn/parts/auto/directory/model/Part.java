@@ -35,11 +35,4 @@ public class Part {
 	@ManyToOne
 	@JoinColumn(name = "category_id", nullable = false)
 	private Category category;
-//
-//	public Part(String article, String partName, List<Model> models, Category category) {
-//		this.article = article;
-//		this.partName = partName;
-//		this.models = models;
-//		this.category = category;
-//	}
 }

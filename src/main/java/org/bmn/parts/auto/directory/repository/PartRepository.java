@@ -1,7 +1,10 @@
 package org.bmn.parts.auto.directory.repository;
 
+import org.bmn.parts.auto.directory.model.Model;
 import org.bmn.parts.auto.directory.model.Part;
 import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.List;
 
 public interface PartRepository extends JpaRepository<Part, Long>, PartRepositoryCustom {
     

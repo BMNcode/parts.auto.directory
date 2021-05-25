@@ -25,6 +25,6 @@ public class Brand {
     @Column(name = "brand_name", nullable = false)
     private String brand;
 
-    @OneToMany(mappedBy="brand")
+    @OneToMany(mappedBy="brand", cascade = CascadeType.ALL)
     private Set<Model> models;
 }
