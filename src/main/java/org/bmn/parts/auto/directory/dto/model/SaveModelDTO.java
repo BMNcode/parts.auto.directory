@@ -1,12 +1,13 @@
 package org.bmn.parts.auto.directory.dto.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import lombok.NoArgsConstructor;
 
 @Getter
-@RequiredArgsConstructor
+@AllArgsConstructor
+@NoArgsConstructor
 public class SaveModelDTO {
-//    private final Long id;
-    private final String model;
-    private final Long brandId;
+    private String model;
+    private Long brandId;
 }

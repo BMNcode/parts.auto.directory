@@ -52,7 +52,4 @@ public class BrandService {
         return brandRepository.existsBrandByBrand(req.getBrand());
     }
 
-
-
-
 }

@@ -23,19 +23,17 @@ public class CategoryController {
 
     @PostMapping
     public BaseResponse<CategoryDTO> save(@RequestBody SaveCategoryDTO req) {
-        return categoryService.existsCategory(req) ?
-                new BaseResponse<>("the category already exists ", categoryService.findCategory(req)) :
-                new BaseResponse<>(req.getCategory() + " successfully added ", categoryService.save(req));
+        return new BaseResponse<>("", categoryService.save(req));
     }
 
     @PutMapping
     public BaseResponse<CategoryDTO> update(@RequestBody UpdateCategoryDTO req) {
-        return new BaseResponse<>("successfully updated ", categoryService.update(req));
+        return new BaseResponse<>("", categoryService.update(req));
     }
 
     @GetMapping("/all")
     public BaseResponse<List<CategoryDTO>> getAllBrand() {
-        return new BaseResponse<>("successfully find all category ", categoryService.getAllCategory());
+        return new BaseResponse<>("", categoryService.getAllCategory());
     }
 
 }

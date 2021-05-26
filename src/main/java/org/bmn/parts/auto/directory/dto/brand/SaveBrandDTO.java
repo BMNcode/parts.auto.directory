@@ -3,8 +3,8 @@ package org.bmn.parts.auto.directory.dto.brand;
 import lombok.*;
 
 @Getter
-@RequiredArgsConstructor
+@AllArgsConstructor
+@NoArgsConstructor
 public class SaveBrandDTO {
-//    private final Long id;
-    private final String brand;
+    private String brand;
 }

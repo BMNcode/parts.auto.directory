@@ -23,18 +23,16 @@ public class ModelController {
 
     @PostMapping
     public BaseResponse<ModelDTO> save(@RequestBody SaveModelDTO req) {
-        return modelService.existsModel(req) ?
-                new BaseResponse<>("the model already exists ", modelService.findModel(req)) :
-                new BaseResponse<>(req.getModel() + " successfully added ", modelService.save(req));
+        return new BaseResponse<>("", modelService.save(req));
     }
 
     @PutMapping
     public BaseResponse<ModelDTO> update(@RequestBody UpdateModelDTO req) {
-        return new BaseResponse<>("successfully updated ", modelService.update(req));
+        return new BaseResponse<>("", modelService.update(req));
     }
 
     @GetMapping("/all")
     public BaseResponse<List<ModelDTO>> getAllModel() {
-        return new BaseResponse<>("successfully find all model ", modelService.getAllModel());
+        return new BaseResponse<>("", modelService.getAllModel());
     }
 }

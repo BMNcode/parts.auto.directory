@@ -27,8 +27,7 @@ insert into category(id, category_name)
     values (1, 'body'),
            (2, 'engine'),
            (3, 'chassis'),
-           (4, 'chassis'),
-           (5, 'brake system'),
-           (6, 'interior');
+           (4, 'brake system'),
+           (5, 'interior');
 
 SELECT setval('hibernate_sequence', 13, true);

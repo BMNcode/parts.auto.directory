@@ -1,11 +1,12 @@
 package org.bmn.parts.auto.directory.dto.category;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import lombok.NoArgsConstructor;
 
 @Getter
-@RequiredArgsConstructor
+@AllArgsConstructor
+@NoArgsConstructor
 public class SaveCategoryDTO {
-//    private final Long id;
-    private final String category;
+    private String category;
 }
